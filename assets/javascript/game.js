@@ -1,30 +1,84 @@
 var wordBank = ["squirtle","bulbasaur", "charmander","pikachu","gengar","alakazam","pidgeot","mewtwo","snorlax","arcanine"]
-
+var lettersGuessed = [];
 var randWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+var wordBlanks = [];
+var rightArray = [];
 
-var wordBlanks = []
+var numberOfGuesses = 10;
+var wins = 0;
+var letter = "";
+
+
+document.getElementById("guessesRemaining").innerHTML = "Number of guesses Remaining:" + " " + numberOfGuesses;
+document.getElementById("chosenword").innerHTML = "";
+for (var i = 0; i < wordBlanks.length; i++) {
+    document.getElementById("chosenword").innerHTML += wordBlanks[i];
+}
+
 for(var i = 0; i < randWord.length; i++) {
     wordBlanks.push('_');
-    // console.log(randWord); // Check which word was chosen from the wordBank array
-    console.log(wordBlanks);
     document.getElementById("chosenword").innerHTML = wordBlanks.join(' ');
 }
 
-function checkLetter(x) {
-    if (x === randWord.charAt(i)) {
-    document.getElementById("chosenword").innerHTML = randWord.charAt(x);
+console.log(wordBlanks);
+console.log(randWord); // Check which word was chosen from the wordBank array
+
+document.onkeydown = function(event) {
+    if(event.keyCode >= 65 && event.keyCode <= 90) {
+        letter = event.key;
+        event.key.toLowerCase();
+        console.log(event);
+        console.log(lettersGuessed);
+        document.getElementById("lettersGuessed").innerHTML = "Letters already guessed: " + lettersGuessed;
+
+        makeGuess(letter);
+        
+    }
+};
+
+function makeGuess(letter) {
+    letter = event.key;
+    if (lettersGuessed.indexOf(letter) === -1) {
+        lettersGuessed.push(letter);
+        checkGuess(letter);
+        
+    }
+};
+
+function checkGuess(letter) {
+
+    var positions = [];
+
+    for(var i = 0; i < randWord.length; i++) {
+        if(wordBlanks[i] === letter) {
+            positions.push(i);
+            document.getElementById("chosenword").innerHTML = positions.join(' ');
+        }
+    }
+
+    if (positions.length <= 0) {
+        numberOfGuesses--;
     }
     else {
-    document.getElementById("chosenword").innerHTML = '_'
+        for(var i = 0; i < positions.length; i++) {
+            wordBlanks[positions[i]] = letter;
+        }
     }
-}
+};
 
 
 
 
 
-
-
+// function checkLetter(x) {
+   // if (x === randWord.charAt(i)) {
+   // document.getElementById("chosenword").innerHTML = randWord.charAt(x);
+   // wordBlanks.push(x);
+   // }
+   // else {
+   // document.getElementById("chosenword").innerHTML = '_'
+   // }
+// }
 
 
 // var wordAnswer = [];
