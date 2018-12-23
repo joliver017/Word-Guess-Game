@@ -1,55 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Word Guess Game</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    
-</head>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
 
-<body>
-    <div class>
-        <img class="logo" src="assets/images/pokemon_logo.png">
-    </div>
+  <body>
+    <div class><img class="logo" src="assets/images/pokemon_logo.png" /></div>
 
     <h1 class="title">Word Guess Game</h1>
 
-    <div class="text">
-        Press any key to get started!
-    </div>
+    <div class="container">
+      <div class="text">Press any key to get started!</div>
 
-    <br>
-    
-    <div class="text" id="totalWins">
-        Wins:
-    </div>
+      <br />
 
-    <br>
+      <div class="text" id="totalWins">Wins:</div>
 
-    <div class="text">
-        Current Word
-    </div>
+      <br />
 
-    <br>
+      <div class="text">Current Word</div>
 
-    <div id="chosenword">
-         <!-- Guessed word goes here -->
-    </div>
+      <br />
 
-    <br>
-    
-    <div class="text" id="guessesRemaining">
-        Number of guesses remaining:
+      <div id="chosenword"><!-- Guessed word goes here --></div>
+
+      <br />
+
+      <div class="text" id="guessesRemaining">Number of guesses remaining:</div>
+
+      <div class="text" id="lettersGuessed">Letters already guessed:</div>
+      
+      <br />
+
+      <div>
+            <img class="starterpokemon" src="assets/images/starter_pokemon.png" />
+      </div>
     </div>
-    
-    <div class="text" id="lettersGuessed">
-        Letters already guessed:
-    </div>
-    
 
     <script src="assets/javascript/game.js"></script>
-</body>
-
+  </body>
 </html>

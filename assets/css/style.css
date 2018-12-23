@@ -3,10 +3,20 @@ body {
 }
 
 .logo {
-    width: 550px;
-    height: 150px;
+    width: 50%;
+    height: 50%;
     display: block;
     margin: auto;
+}
+
+.container {
+    padding-top: 40px;
+    width: 80%;
+    height: 300px;
+    margin: auto;
+    background-color: #FFCB05;
+    border: 5px solid #0C5492;
+    border-radius: 15px;
 }
 
 .title {
@@ -37,4 +47,9 @@ body {
     font-size: 30px;
     text-align: center;
     color: #0070B6;
+}
+
+.starterpokemon {
+    width: 80%;
+    height: 80%;
 }
