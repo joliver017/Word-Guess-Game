@@ -81,6 +81,7 @@ function checkGuess(letter) {
 
 function youWon() {
   if (wordBlanks.indexOf("_") === -1) {
+    numberOfGuesses = 10;
     document.getElementById("totalWins").innerHTML = "Wins: " + wins++;
     alert("you win");
     startGame();
