@@ -26,10 +26,11 @@ document.onkeydown = function(event) {
     if(event.keyCode >= 65 && event.keyCode <= 90) {
         letter = event.key;
         event.key.toLowerCase();
-        console.log(event);
-        console.log(lettersGuessed);
+        
         document.getElementById("lettersGuessed").innerHTML = "Letters already guessed: " + lettersGuessed;
-        makeGuess(letter);      
+        makeGuess(letter);   
+        console.log(event);
+        console.log(lettersGuessed);   
     }
 };
 
@@ -37,7 +38,8 @@ function makeGuess(letter) {
     letter = event.key;
     if (lettersGuessed.indexOf(letter) === -1) {
         lettersGuessed.push(letter);
-        checkGuess(letter);  
+        checkGuess(letter);
+        
     }
 };
 
@@ -46,15 +48,17 @@ function checkGuess(letter) {
         if(letter === randWord[i]) {
             wordBlanks[i] = letter;
             document.getElementById("chosenword").innerHTML = wordBlanks.join(' ');
-            // document.getElementById("guessesRemaining").innerHTML = "Number of guesses Remaining:" + " " + numberOfGuesses++;
         }
         
     };
-
-    if(letter != randWord[i]) { // This decreases number of guesses by 1, but it's doing this regardless if letter is correct or not
+    if(letter != randWord[i]) {
         document.getElementById("guessesRemaining").innerHTML = "Number of guesses Remaining:" + " " + numberOfGuesses--;
     };
 };
+
+
+    
+
 
 
     // console.log(wordBlanks);
