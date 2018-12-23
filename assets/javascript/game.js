@@ -48,13 +48,14 @@ function checkGuess(letter) {
         if(letter === randWord[i]) {
             wordBlanks[i] = letter;
             document.getElementById("chosenword").innerHTML = wordBlanks.join(' ');
-        }
-        
+        }   
     };
-    if(letter != randWord[i]) {
+
+    if(wordBlanks.indexOf(letter) === -1) {
         document.getElementById("guessesRemaining").innerHTML = "Number of guesses Remaining:" + " " + numberOfGuesses--;
-    };
+        };
 };
+
 
 
     
