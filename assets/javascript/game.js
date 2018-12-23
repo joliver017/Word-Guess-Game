@@ -2,7 +2,6 @@ var wordBank = ["squirtle","bulbasaur", "charmander","pikachu","gengar","alakaza
 var lettersGuessed = [];
 var randWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 var wordBlanks = [];
-var rightArray = [];
 
 var numberOfGuesses = 10;
 var wins = 0;
@@ -30,9 +29,7 @@ document.onkeydown = function(event) {
         console.log(event);
         console.log(lettersGuessed);
         document.getElementById("lettersGuessed").innerHTML = "Letters already guessed: " + lettersGuessed;
-
-        makeGuess(letter);
-        
+        makeGuess(letter);      
     }
 };
 
@@ -40,31 +37,40 @@ function makeGuess(letter) {
     letter = event.key;
     if (lettersGuessed.indexOf(letter) === -1) {
         lettersGuessed.push(letter);
-        checkGuess(letter);
-        
+        checkGuess(letter);  
     }
 };
 
 function checkGuess(letter) {
-
-    var positions = [];
-
-    for(var i = 0; i < randWord.length; i++) {
-        if(wordBlanks[i] === letter) {
-            positions.push(i);
-            document.getElementById("chosenword").innerHTML = positions.join(' ');
+    for(var i = 0; i < wordBlanks.length; i++) {
+        if(letter === randWord[i]) {
+            wordBlanks[i] = letter;
+            document.getElementById("chosenword").innerHTML = wordBlanks.join(' ');
+            // document.getElementById("guessesRemaining").innerHTML = "Number of guesses Remaining:" + " " + numberOfGuesses++;
         }
-    }
+        
+    };
 
-    if (positions.length <= 0) {
-        numberOfGuesses--;
-    }
-    else {
-        for(var i = 0; i < positions.length; i++) {
-            wordBlanks[positions[i]] = letter;
-        }
-    }
+    if(letter != randWord[i]) { // This decreases number of guesses by 1, but it's doing this regardless if letter is correct or not
+        document.getElementById("guessesRemaining").innerHTML = "Number of guesses Remaining:" + " " + numberOfGuesses--;
+    };
 };
+
+
+    // console.log(wordBlanks);
+
+ //   if (wordBlanks.length <= 0) {
+   //     numberOfGuesses--;
+     //   document.getElementById("guessesRemaining").innerHTML = "Number of guesses Remaining:" + " " + numberOfGuesses;
+    //}
+// };
+
+  //  else {
+    //    for(var i = 0; i < wordBlanks.length; i++) {
+      //      wordBlanks[wordBlanks[i]] = letter;
+        //}
+    //}
+//};
 
 
 
