@@ -24,7 +24,7 @@ document.getElementById("guessesRemaining").innerHTML =
 function startGame() {
   numberOfGuesses = 10;
   document.getElementById("guessesRemaining").innerHTML =
-      "Number of guesses Remaining:" + " " + numberOfGuesses
+    "Number of guesses Remaining:" + " " + numberOfGuesses;
   lettersGuessed = [];
   wordBlanks = [];
   randWord = wordBank[Math.floor(Math.random() * wordBank.length)];
@@ -70,9 +70,10 @@ function checkGuess(letter) {
   }
 
   if (wordBlanks.indexOf(letter) === -1) {
+    numberOfGuesses--;
     document.getElementById("guessesRemaining").innerHTML =
-      "Number of guesses Remaining:" + " " + numberOfGuesses--;
-    if (numberOfGuesses === -1) {
+      "Number of guesses Remaining:" + " " + numberOfGuesses;
+    if (numberOfGuesses === 0) {
       alert("you lose");
       startGame();
       console.log(wordBlanks);
