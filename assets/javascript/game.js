@@ -23,6 +23,8 @@ document.getElementById("guessesRemaining").innerHTML =
 
 function startGame() {
   numberOfGuesses = 10;
+  document.getElementById("guessesRemaining").innerHTML =
+      "Number of guesses Remaining:" + " " + numberOfGuesses
   lettersGuessed = [];
   wordBlanks = [];
   randWord = wordBank[Math.floor(Math.random() * wordBank.length)];
