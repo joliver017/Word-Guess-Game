@@ -15,17 +15,20 @@ var randWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 var wordBlanks = [];
 
 var numberOfGuesses = 10;
-var wins = 1;
+var wins = 0;
 var letter = "";
 
-document.getElementById("guessesRemaining").innerHTML =
-  "Number of guesses Remaining:" + " " + numberOfGuesses;
-
+// This function sets everything to up to start the game
+// Resets guesses to 10, clears the letters guessed, chooses another word
 function startGame() {
+  document.getElementById("totalWins").innerHTML =
+    "Wins:" + " " + wins;
   numberOfGuesses = 10;
   document.getElementById("guessesRemaining").innerHTML =
     "Number of guesses Remaining:" + " " + numberOfGuesses;
   lettersGuessed = [];
+  document.getElementById("lettersGuessed").innerHTML =
+    "Letters already guessed: " + lettersGuessed;
   wordBlanks = [];
   randWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 
@@ -37,9 +40,11 @@ function startGame() {
 
 startGame();
 
-console.log(wordBlanks);
+console.log(wordBlanks); // Check the blanks match number of letters
 console.log(randWord); // Check which word was chosen from the wordBank array
 
+// This is the event, makes sure only A-Z can be clicked, converts to lowercase
+// Also includes function inside makeGuess
 document.onkeydown = function(event) {
   if (event.keyCode >= 65 && event.keyCode <= 90) {
     letter = event.key;
@@ -53,6 +58,7 @@ document.onkeydown = function(event) {
   }
 };
 
+// This function pushes the guessed letter to the array, then calls checkGuess function
 function makeGuess(letter) {
   letter = event.key;
   if (lettersGuessed.indexOf(letter) === -1) {
@@ -61,6 +67,8 @@ function makeGuess(letter) {
   }
 }
 
+// This function verifies if the letter was correct or incorrect
+// If it matches a letter, it replaces the blank with that letter
 function checkGuess(letter) {
   for (var i = 0; i < wordBlanks.length; i++) {
     if (letter === randWord[i]) {
@@ -69,6 +77,8 @@ function checkGuess(letter) {
     }
   }
 
+  // If it does not match a letter, it subtracts 1 from numberOfGuesses
+  // If numberOfGuesses reaches 0, alert you lose and start game again
   if (wordBlanks.indexOf(letter) === -1) {
     numberOfGuesses--;
     document.getElementById("guessesRemaining").innerHTML =
@@ -82,10 +92,11 @@ function checkGuess(letter) {
   }
 }
 
+// If no more blanks are left, alert you win and start game again
 function youWon() {
   if (wordBlanks.indexOf("_") === -1) {
-    numberOfGuesses = 10;
-    document.getElementById("totalWins").innerHTML = "Wins: " + wins++;
+    wins++;
+    document.getElementById("totalWins").innerHTML = "Wins: " + wins;
     alert("you win");
     startGame();
     console.log(wordBlanks);
